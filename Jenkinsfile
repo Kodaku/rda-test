@@ -9,10 +9,12 @@ pipeline {
 
     stages {
         stage("Build image") {
-            script {
-                img = registry + ":{env.BUILD_ID}"
-                println("${img}")
-                dockerImage = docker.build("${img}")
+            steps {
+                script {
+                    img = registry + ":{env.BUILD_ID}"
+                    println("${img}")
+                    dockerImage = docker.build("${img}")
+                }
             }
         }
 
