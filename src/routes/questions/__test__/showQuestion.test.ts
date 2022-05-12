@@ -1,7 +1,8 @@
 import request from "supertest";
+import { BASE_URL } from "../../../constants";
 
 it("require all questions in the database", async () => {
-    const response = await request("http://host.docker.internal:5000")
+    const response = await request(BASE_URL)
         .get("/api/questions")
         .send({})
         .expect(200);
@@ -10,7 +11,7 @@ it("require all questions in the database", async () => {
 });
 
 it("require a specific question in the database", async () => {
-    const response = await request("http://host.docker.internal:5000")
+    const response = await request(BASE_URL)
         .get("/api/questions/1")
         .send({})
         .expect(200);

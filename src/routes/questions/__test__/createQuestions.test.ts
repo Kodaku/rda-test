@@ -1,7 +1,8 @@
 import request from "supertest";
+import { BASE_URL } from "../../../constants";
 
 it("create all the questions", async () => {
-    const response = await request("http://host.docker.internal:5000")
+    const response = await request(BASE_URL)
         .get("/api/questions/create")
         .send({})
         .expect(200);
@@ -10,7 +11,7 @@ it("create all the questions", async () => {
 });
 
 it("create a question and then delete it", async () => {
-    const response = await request("http://host.docker.internal:5000")
+    const response = await request(BASE_URL)
         .post("/api/questions/add")
         .send({
             questionId: 800,
@@ -32,7 +33,7 @@ it("create a question and then delete it", async () => {
 
     // console.log(response.body);
 
-    const deleteResponse = await request("http://host.docker.internal:5000")
+    const deleteResponse = await request(BASE_URL)
         .get("/api/questions/delete/800")
         .send({})
         .expect(200);
